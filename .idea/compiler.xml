@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="multiple-authorization-server" />
+        <module name="multiple-models" />
+        <module name="multiple-web" />
+        <module name="multiple-resource-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="multiple-authorization-server" target="19" />
+      <module name="multiple-management" target="19" />
+      <module name="multiple-models" target="19" />
+      <module name="multiple-resource-server" target="19" />
+      <module name="multiple-security-client" target="19" />
+      <module name="multiple-web" target="19" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="multiple-authorization-server" options="-parameters" />
+      <module name="multiple-models" options="-parameters" />
+      <module name="multiple-resource-server" options="-parameters" />
+      <module name="multiple-security-client" options="-parameters" />
+      <module name="multiple-web" options="-parameters" />
+      <module name="multipleprojects" options="" />
+    </option>
+  </component>
+</project>
