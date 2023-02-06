@@ -1,18 +1,19 @@
 package com.multiple.multiplemodels.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Calendar;
 import java.util.Date;
 
 @Entity
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class VerificationToken {
 
-    //Expiration time 10 miutes
+    //Expiration time 10 minutes
     private static  final int EXPIRATION_TIME = 10;
 
     @Id

@@ -4,9 +4,7 @@ package com.multiple.multiplemodels.model;
 import com.multiple.multiplemodels.model.enums.RoleInfo;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import java.util.Set;
@@ -15,6 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Role {
 
@@ -48,5 +47,16 @@ public class Role {
 
     public Role(RoleInfo roleInfo){
         this.roleInfo = roleInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", roleInfo=" + roleInfo +
+                ", description='" + description + '\'' +
+                ", users=" + users +
+                ", privileges=" + privileges +
+                '}';
     }
 }

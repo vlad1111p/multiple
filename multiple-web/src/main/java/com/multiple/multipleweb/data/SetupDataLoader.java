@@ -6,9 +6,9 @@ import com.multiple.multiplemodels.model.Role;
 import com.multiple.multiplemodels.model.Users;
 import com.multiple.multiplemodels.model.enums.RoleInfo;
 
-import com.multiple.multipleweb.repository.PrivilegeRepository;
-import com.multiple.multipleweb.repository.RoleRepository;
-import com.multiple.multipleweb.repository.UserRepository;
+import com.multiple.multiplemodels.repository.PrivilegeRepository;
+import com.multiple.multiplemodels.repository.RoleRepository;
+import com.multiple.multiplemodels.repository.UserRepository;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;

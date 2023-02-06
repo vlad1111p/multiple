@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Set;
 
@@ -11,6 +12,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @Entity
+@ToString
 public class Privilege {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +21,7 @@ public class Privilege {
     private String name;
 
     @ManyToMany(mappedBy = "privileges")
+    @ToString.Exclude
     private Set<Role> roles;
 
     public Privilege(String name) {

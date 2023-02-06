@@ -3,7 +3,7 @@ package com.multiple.multipleweb.service.impl;
 import com.multiple.multiplemodels.dto.UserModel;
 import com.multiple.multiplemodels.model.VerificationToken;
 import com.multiple.multiplemodels.model.Users;
-import com.multiple.multipleweb.repository.UserRepository;
+import com.multiple.multiplemodels.repository.UserRepository;
 import com.multiple.multipleweb.service.UserService;
 import org.springframework.stereotype.Service;
 

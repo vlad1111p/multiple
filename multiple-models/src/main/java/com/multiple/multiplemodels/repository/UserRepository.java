@@ -1,4 +1,4 @@
-package com.multiple.multipleweb.repository;
+package com.multiple.multiplemodels.repository;
 
 import com.multiple.multiplemodels.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
