@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Type;
 
 import java.util.Objects;
@@ -20,6 +21,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@jakarta.persistence.Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Role {
 
     @Id
@@ -27,9 +30,9 @@ public class Role {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    //    CREATE TYPE role_info AS ENUM (
-//        'USER', 'ADMIN'
-//    )
+
+    //run the following query in postgresql
+    //CREATE TYPE role_info AS ENUM ('USER', 'ADMIN' );
     @Enumerated(EnumType.STRING)
     @Type(PostgreSQLEnumType.class)
     @Column(columnDefinition = "role_info")
@@ -55,17 +58,6 @@ public class Role {
     }
 
     @Override
-    public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", roleInfo=" + roleInfo +
-                ", description='" + description + '\'' +
-                ", users=" + users +
-                ", privileges=" + privileges +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
@@ -76,5 +68,17 @@ public class Role {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", roleInfo=" + roleInfo +
+                ", description='" + description + '\'' +
+                ", users=" + users +
+                ", privileges=" + privileges +
+                '}';
     }
 }
