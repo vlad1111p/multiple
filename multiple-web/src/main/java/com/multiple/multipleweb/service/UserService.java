@@ -1,12 +1,15 @@
 package com.multiple.multipleweb.service;
 
 import com.multiple.multiplemodels.dto.UserModel;
-import com.multiple.multiplemodels.model.VerificationToken;
 import com.multiple.multiplemodels.model.Users;
+import com.multiple.multiplemodels.model.VerificationToken;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
+
+    List<Users> getAllUsers();
 
     Users registerUser(UserModel userModel);
 

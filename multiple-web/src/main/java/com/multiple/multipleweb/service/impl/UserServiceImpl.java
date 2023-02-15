@@ -7,7 +7,9 @@ import com.multiple.multiplemodels.repository.UserRepository;
 import com.multiple.multipleweb.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -19,6 +21,11 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+
+    @Override
+    public List<Users> getAllUsers() {
+        return userRepository.findAll();
+    }
 
     @Override
     public Users registerUser(UserModel userModel) {

@@ -1,0 +1,12 @@
+server:
+  port: 9009
+
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: client id here
+            client-secret: client secret here

@@ -25,7 +25,7 @@ import java.util.Set;
 @Transactional
 public class UserDetailServiceImpl implements UserDetailsService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserDetailServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -57,21 +57,17 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
         Set<String> privileges = new HashSet<>();
         Set<Privilege> collection = new HashSet<>();
-        for (Role role : roles) {
+        roles.forEach(role -> {
             privileges.add(role.getRoleInfo().toString());
             collection.addAll(role.getPrivileges());
-        }
-        for (Privilege item : collection) {
-            privileges.add(item.getName());
-        }
+        });
+        collection.forEach(privilege -> privileges.add(privilege.getName()));
         return privileges;
     }
 
     private Set<GrantedAuthority> getGrantedAuthorities(Set<String> privileges) {
         Set<GrantedAuthority> authorities = new HashSet<>();
-        for (String privilege : privileges) {
-            authorities.add(new SimpleGrantedAuthority(privilege));
-        }
+        privileges.forEach(privilege -> authorities.add(new SimpleGrantedAuthority(privilege)));
         return authorities;
     }
 }

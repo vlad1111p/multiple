@@ -4,9 +4,14 @@ package com.multiple.multiplemodels.model;
 import com.multiple.multiplemodels.model.enums.RoleInfo;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.Hibernate;
 import org.hibernate.annotations.Type;
 
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -58,5 +63,18 @@ public class Role {
                 ", users=" + users +
                 ", privileges=" + privileges +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Role role = (Role) o;
+        return id != null && Objects.equals(id, role.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }
