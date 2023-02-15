@@ -1,7 +1,7 @@
 package com.multiple.multipleweb.service;
 
 import com.multiple.multiplemodels.dto.UserModel;
-import com.multiple.multiplemodels.model.Users;
+import com.multiple.multiplemodels.model.User;
 import com.multiple.multiplemodels.model.VerificationToken;
 
 import java.util.List;
@@ -9,25 +9,30 @@ import java.util.Optional;
 
 public interface UserService {
 
-    List<Users> getAllUsers();
+    List<User> getAllUsers();
 
-    Users registerUser(UserModel userModel);
+    User findUserById(Long id);
 
-    void saveVerificationTokenForUser(String token, Users user);
+    User findUserByUsername(String username);
+
+    User findUserByEmail(String email);
+
+    User registerUser(UserModel userModel);
+
+    void saveVerificationTokenForUser(String token, User user);
 
     String validateVerificationToken(String token);
 
     VerificationToken generateNewVerificationToken(String oldToken);
 
-    Users findUserByEmail(String email);
 
-    void createPasswordResetTokenForUser(Users user, String token);
+    void createPasswordResetTokenForUser(User user, String token);
 
     String validatePasswordResetToken(String token);
 
-    Optional<Users> getUserByPasswordResetToken(String token);
+    Optional<User> getUserByPasswordResetToken(String token);
 
-    void changePassword(Users user, String newPassword);
+    void changePassword(User user, String newPassword);
 
-    boolean checkIfValidOldPassword(Users user, String oldPassword);
+    boolean checkIfValidOldPassword(User user, String oldPassword);
 }

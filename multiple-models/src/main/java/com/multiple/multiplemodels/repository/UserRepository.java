@@ -1,13 +1,17 @@
 package com.multiple.multiplemodels.repository;
 
-import com.multiple.multiplemodels.model.Users;
+import com.multiple.multiplemodels.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 
 @Repository
-public interface UserRepository extends JpaRepository<Users, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
-    Users findByEmail(String email);
+    Optional<User> findByEmail(String email);
+
+    Optional<User> findByUsername(String username);
 }
 

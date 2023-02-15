@@ -3,9 +3,9 @@ package com.multiple.multipleweb.data;
 
 import com.multiple.multiplemodels.model.Privilege;
 import com.multiple.multiplemodels.model.Role;
-import com.multiple.multiplemodels.model.Users;
+import com.multiple.multiplemodels.model.User;
+import com.multiple.multiplemodels.model.enums.PrivilegeInfo;
 import com.multiple.multiplemodels.model.enums.RoleInfo;
-
 import com.multiple.multiplemodels.repository.PrivilegeRepository;
 import com.multiple.multiplemodels.repository.RoleRepository;
 import com.multiple.multiplemodels.repository.UserRepository;
@@ -13,7 +13,6 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import java.util.Set;
 
@@ -25,11 +24,10 @@ import static com.multiple.multiplemodels.model.enums.RoleInfo.USER;
 public class SetupDataLoader implements
         ApplicationListener<ContextRefreshedEvent> {
 
-    boolean alreadySetup = false;
-
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PrivilegeRepository privilegeRepository;
+    boolean alreadySetup = false;
 
     public SetupDataLoader(UserRepository userRepository, RoleRepository roleRepository, PrivilegeRepository privilegeRepository) {
         this.userRepository = userRepository;
@@ -56,7 +54,7 @@ public class SetupDataLoader implements
         createRoleIfNotFound(USER, Set.of(readPrivilege));
 
         Role adminRole = roleRepository.findByRoleInfo(ADMIN);
-        Users user = new Users();
+        User user = new User();
 //      user.setPassword(passwordEncoder.encode("test"));
         user.setEmail("test@test.com");
         user.setRoles(Set.of(adminRole));
@@ -71,14 +69,14 @@ public class SetupDataLoader implements
 
         Privilege privilege = privilegeRepository.findByName(name);
         if (privilege == null) {
-            privilege = new Privilege(name);
+            privilege = new Privilege(PrivilegeInfo.valueOf(name));
             privilegeRepository.save(privilege);
         }
         return privilege;
     }
 
     @Transactional
-    Role createRoleIfNotFound(
+    void createRoleIfNotFound(
             RoleInfo name, Set<Privilege> privileges) {
 
         Role role = roleRepository.findByRoleInfo(name);
@@ -87,6 +85,5 @@ public class SetupDataLoader implements
             role.setPrivileges(privileges);
             roleRepository.save(role);
         }
-        return role;
     }
 }

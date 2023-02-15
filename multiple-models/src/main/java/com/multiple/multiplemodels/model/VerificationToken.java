@@ -11,15 +11,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class VerificationToken {
 
     //Expiration time 10 minutes
-    private static  final int EXPIRATION_TIME = 10;
+    private static final int EXPIRATION_TIME = 10;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,9 +34,9 @@ public class VerificationToken {
     @JoinColumn(name = "users_id",
             nullable = false,
             foreignKey = @ForeignKey(name = "FK_USERS_VERIFY_TOKEN"))
-    private Users user;
+    private User user;
 
-    public VerificationToken(Users user, String token) {
+    public VerificationToken(User user, String token) {
         super();
         this.token = token;
         this.user = user;
@@ -67,5 +67,15 @@ public class VerificationToken {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "VerificationToken{" +
+                "id=" + id +
+                ", token='" + token + '\'' +
+                ", expirationTime=" + expirationTime +
+                ", user=" + user +
+                '}';
     }
 }

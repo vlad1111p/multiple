@@ -1,7 +1,7 @@
 package com.multiple.multipleweb.controller;
 
 import com.multiple.multiplemodels.dto.UserModel;
-import com.multiple.multiplemodels.model.Users;
+import com.multiple.multiplemodels.model.User;
 import com.multiple.multipleweb.service.UserService;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,17 +20,17 @@ public class UserController {
 
 
     @RequestMapping("/email")
-    public Users getUserByEmail(@RequestAttribute("email") String email) {
+    public User getUserByEmail(@RequestAttribute("email") String email) {
         return userService.findUserByEmail(email);
     }
 
     @RequestMapping("/register")
-    public Users register(@RequestBody UserModel userModel) {
+    public User register(@RequestBody UserModel userModel) {
         return userService.registerUser(userModel);
     }
 
     @RequestMapping("/all")
-    public Iterable<Users> getAllUsers() {
+    public Iterable<User> getAllUsers() {
         return userService.getAllUsers();
     }
 

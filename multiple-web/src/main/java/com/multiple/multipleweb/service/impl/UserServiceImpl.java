@@ -1,15 +1,14 @@
 package com.multiple.multipleweb.service.impl;
 
 import com.multiple.multiplemodels.dto.UserModel;
+import com.multiple.multiplemodels.model.User;
 import com.multiple.multiplemodels.model.VerificationToken;
-import com.multiple.multiplemodels.model.Users;
 import com.multiple.multiplemodels.repository.UserRepository;
 import com.multiple.multipleweb.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -23,17 +22,32 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public List<Users> getAllUsers() {
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     @Override
-    public Users registerUser(UserModel userModel) {
+    public User findUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public User findUserByUsername(String username) {
+        return userRepository.findByUsername(username).orElse(null);
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email).orElse(null);
+    }
+
+    @Override
+    public User registerUser(UserModel userModel) {
         return null;
     }
 
     @Override
-    public void saveVerificationTokenForUser(String token, Users user) {
+    public void saveVerificationTokenForUser(String token, User user) {
 
     }
 
@@ -47,13 +61,9 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-    @Override
-    public Users findUserByEmail(String email) {
-        return null;
-    }
 
     @Override
-    public void createPasswordResetTokenForUser(Users user, String token) {
+    public void createPasswordResetTokenForUser(User user, String token) {
 
     }
 
@@ -63,17 +73,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<Users> getUserByPasswordResetToken(String token) {
+    public Optional<User> getUserByPasswordResetToken(String token) {
         return Optional.empty();
     }
 
     @Override
-    public void changePassword(Users user, String newPassword) {
+    public void changePassword(User user, String newPassword) {
 
     }
 
     @Override
-    public boolean checkIfValidOldPassword(Users user, String oldPassword) {
+    public boolean checkIfValidOldPassword(User user, String oldPassword) {
         return false;
     }
 }

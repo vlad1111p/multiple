@@ -31,7 +31,7 @@ public class Role {
 //        'USER', 'ADMIN'
 //    )
     @Enumerated(EnumType.STRING)
-    @Type( PostgreSQLEnumType.class)
+    @Type(PostgreSQLEnumType.class)
     @Column(columnDefinition = "role_info")
     private RoleInfo roleInfo;
 
@@ -39,7 +39,7 @@ public class Role {
     private String description;
 
     @ManyToMany(mappedBy = "roles")
-    private Set<Users> users;
+    private Set<User> users;
 
     @ManyToMany
     @JoinTable(
@@ -50,7 +50,7 @@ public class Role {
                     name = "privilege_id", referencedColumnName = "id"))
     private Set<Privilege> privileges;
 
-    public Role(RoleInfo roleInfo){
+    public Role(RoleInfo roleInfo) {
         this.roleInfo = roleInfo;
     }
 
