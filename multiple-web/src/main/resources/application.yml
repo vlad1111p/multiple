@@ -1,14 +1,14 @@
 spring:
   jpa:
     database: POSTGRESQL
-    show-sql: true
+    #    show-sql: true
     properties:
       jakarta:
         persistence:
           sharedCache:
             mode: ENABLE_SELECTIVE
       hibernate:
-        format_sql: true
+        #        format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
         javax:
           cache:
