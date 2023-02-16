@@ -10,3 +10,6 @@ spring:
           google:
             client-id: client id here
             client-secret: client secret here
+          facebook:
+            client-id: client id here
+            client-secret: client secret here
