@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Type;
 
 import java.util.Objects;
@@ -16,11 +17,15 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @Entity
+@jakarta.persistence.Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Privilege {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //run the following query in postgresql
+    //CREATE TYPE privilege_info AS ENUM ('READ_PRIVILEGE', 'WRITE_PRIVILEGE');
     @Enumerated(EnumType.STRING)
     @Type(PostgreSQLEnumType.class)
     @Column(columnDefinition = "privilege_info")

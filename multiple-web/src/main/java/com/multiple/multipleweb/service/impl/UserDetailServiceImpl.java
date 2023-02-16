@@ -28,12 +28,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
         this.userService = userService;
     }
 
-    private Set<SimpleGrantedAuthority> getAuthorities(User user) {
-        return user.getRoles().stream()
-                .map(Role::getPrivileges).flatMap(Collection::stream)
-                .map(privilege -> new SimpleGrantedAuthority(privilege.getPrivilegeInfo().toString()))
-                .collect(Collectors.toSet());
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -47,7 +41,20 @@ public class UserDetailServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("User not found");
         }
         return new org.springframework.security.core.userdetails.User(
-                user.getEmail(), user.getPassword(), user.isEnabled(), true, true,
-                true, getAuthorities(user));
+                user.getEmail(),
+                user.getPassword(),
+                user.isEnabled(),
+                true,
+                true,
+                true,
+                getAuthorities(user));
+    }
+
+    private Set<SimpleGrantedAuthority> getAuthorities(User user) {
+        return user.getRoles().stream()
+                .map(Role::getPrivileges)
+                .flatMap(Collection::stream)
+                .map(privilege -> new SimpleGrantedAuthority(privilege.getPrivilegeInfo().toString()))
+                .collect(Collectors.toSet());
     }
 }

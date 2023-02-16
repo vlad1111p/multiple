@@ -67,7 +67,7 @@ public class SetupDataLoader implements
     @Transactional
     Privilege createPrivilegeIfNotFound(String name) {
 
-        Privilege privilege = privilegeRepository.findByName(name);
+        Privilege privilege = privilegeRepository.findByPrivilegeInfo(PrivilegeInfo.valueOf(name));
         if (privilege == null) {
             privilege = new Privilege(PrivilegeInfo.valueOf(name));
             privilegeRepository.save(privilege);
