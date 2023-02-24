@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = {"com.multiple.multiplemodels", "com.multiple.multipleweb"})
+@SpringBootApplication(scanBasePackages = {"com.multiple.multiplemodels", "com.multiple.multipleweb",
+        "com.multiple.multipleauthorizationserver"})
 @EnableAutoConfiguration
 public class MultipleWebApplication {
 
