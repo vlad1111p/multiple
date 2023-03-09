@@ -1,4 +1,14 @@
 spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: client id here
+            client-secret: client secret here
+          facebook:
+            client-id: client id here
+            client-secret: client secret here
   jpa:
     database: POSTGRESQL
     #    show-sql: true
@@ -20,9 +30,9 @@ spring:
       ddl-auto: create-drop
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:{port}/{dbname}
-    username:
-    password:
+    url: jdbc:postgresql://localhost:5432/multiple
+    username: postgres
+    password: vlad
 
 #logging:
 #  level:

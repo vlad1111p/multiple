@@ -31,6 +31,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
 
         <!--database-->
         <dependency>
@@ -52,7 +56,6 @@
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache</artifactId>
             <version>3.10.8</version>
-            <scope>runtime</scope>
         </dependency>
 
         <!-- Lombok -->
@@ -75,16 +78,8 @@
             <version>${parent.version}</version>
         </dependency>
 
-        <!--security-->
-        <dependency>
-            <groupId>org.springframework.security.oauth</groupId>
-            <artifactId>spring-security-oauth2</artifactId>
-            <version>2.5.2.RELEASE</version>
-            <scope>compile</scope>
-        </dependency>
 
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -117,5 +112,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
