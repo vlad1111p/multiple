@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 
 @EntityScan(basePackages = {"com.multiple.multiplemodels.model"})
 @EnableJpaRepositories(basePackages = "com.multiple.multiplemodels.repository")
-@ComponentScan("com.multiple.multipleauthorizationserver.auth")
+@ComponentScan({"com.multiple.multipleauthorizationserver.auth", "com.multiple.multipleweb"})
 @SpringBootApplication(scanBasePackages = {"com.multiple.multiplemodels", "com.multiple.multipleweb",
         "com.multiple.multipleauthorizationserver"})
 @EnableAutoConfiguration

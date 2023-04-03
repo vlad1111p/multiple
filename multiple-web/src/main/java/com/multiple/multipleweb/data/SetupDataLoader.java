@@ -1,6 +1,5 @@
 package com.multiple.multipleweb.data;
 
-
 import com.multiple.multiplemodels.model.Privilege;
 import com.multiple.multiplemodels.model.Role;
 import com.multiple.multiplemodels.model.User;
@@ -19,10 +18,10 @@ import java.util.Set;
 import static com.multiple.multiplemodels.model.enums.RoleInfo.ADMIN;
 import static com.multiple.multiplemodels.model.enums.RoleInfo.USER;
 
+;
 
 @Component
-public class SetupDataLoader implements
-        ApplicationListener<ContextRefreshedEvent> {
+public class SetupDataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -39,11 +38,10 @@ public class SetupDataLoader implements
 //    private PasswordEncoder passwordEncoder;
 
     @Override
-    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
-
-        if (alreadySetup)
+        if (alreadySetup) {
             return;
+        }
         Privilege readPrivilege
                 = createPrivilegeIfNotFound("READ_PRIVILEGE");
         Privilege writePrivilege
