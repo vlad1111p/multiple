@@ -35,12 +35,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
 
         <!--database-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>3.0.2</version>
+            <version>3.0.4</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -78,7 +82,13 @@
             <version>${parent.version}</version>
         </dependency>
 
+        <!--security-->
 
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>6.0.2</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
